@@ -1,7 +1,10 @@
 import React from "react";
+import { useContextGobal } from "../Components/utils/global.context";
 
+const Card = ({ dentist }) => {
 
-const Card = ({ name, username, id }) => {
+  const { name, username, id } = dentist
+  const { state, dispatch } = useContextGobal()
 
   const addFav = ()=>{
     // Aqui iria la logica para agregar la Card en el localStorage
