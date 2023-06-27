@@ -18,8 +18,8 @@ const Detail = () => {
  
   // Consumiendo el parametro dinamico de la URL deberan hacer un fetch a un user en especifico
 
-  {/* aqui deberan renderizar la informacion en detalle de un user en especifico */}
-  {/* Deberan mostrar el name - email - phone - website por cada user en especifico */}
+  // {/* aqui deberan renderizar la informacion en detalle de un user en especifico */}
+  // {/* Deberan mostrar el name - email - phone - website por cada user en especifico */}
   return (
     
     <section className='card-container'>
@@ -27,7 +27,7 @@ const Detail = () => {
       {dentist
         ?
           <div className='card detail'>
-            <img src='' />
+            <img src='public/images/doctor.jpg' alt="" />
             <div className='details'>
               <h3>{dentist?.name}</h3>
               <p><strong>Email:</strong> {dentist?.email}</p>
