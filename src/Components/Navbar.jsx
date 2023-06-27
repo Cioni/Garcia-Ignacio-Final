@@ -1,7 +1,7 @@
 import React from 'react'
 import { useContextGlobal } from './utils/global.context'
 import { Link } from 'react-router-dom/dist'
-import { FaBeer  } from 'react-icons/fa';
+import { FaRegLightbulb, FaLightbulb  } from 'react-icons/fa';
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
@@ -27,8 +27,8 @@ const Navbar = () => {
         <button onClick={changeTheme}
         className='btn-theme'>
           {state.theme === "dark"
-          ? <FaBeer />
-          : <FaBeer />
+          ? <FaRegLightbulb />
+          : <FaLightbulb />
           }
         </button>
       </div>
