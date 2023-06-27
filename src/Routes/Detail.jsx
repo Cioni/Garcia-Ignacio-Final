@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Loader from '../Components/Loader';
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 

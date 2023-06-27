@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom/dist";
-import { useContextGobal } from "../Components/utils/global.context";
+import { useContextGlobal } from "./utils/global.context";
 
 const Card = ({ dentist }) => {
 
   const { name, username, id } = dentist
-  const { state, dispatch } = useContextGobal()
+  const { state, dispatch } = useContextGlobal()
   const favs = state.favs
   const isfav = favs.find
 
