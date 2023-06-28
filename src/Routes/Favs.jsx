@@ -1,28 +1,37 @@
 import React from "react";
-import Card from "../Components/Card";
+import Card from "../Components/Card/Card";
+import NotFound from "./NotFound";
+import { useFavorites } from "../Components/utils/useFavorites";
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Favs = () => {
-  const {state, dispatch} = useContextGlobal()
-  const favs = state.favs
+    const {favorites, updateFavorites} = useFavorites()
 
-  return (
-    <section className="favs">
-    <div className="action-favs">
-      <h1>Dentists Favs</h1>
-      {favs.length > 0 && <button onClick={() => {dispatch({type: "removeAllFavs"})}}>Remove all</button>}
-    </div>
-      <div className="card-grid">
-        {/* este componente debe consumir los destacados del localStorage */}
-        {/* Deberan renderizar una Card por cada uno de ellos */}
-        {favs.length > 0
-        ? favs.map(fav => <Card key={fav.id} dentist={fav}/>)
-        : <p>No agregaste ningun favorito</p>
-        }
-      </div>
-    </section>
-  );
+    function renderFavorites() {
+        return favorites && favorites.map((item) => (
+            <Card key={item.id} name={item.name} username={item.username} id={item.id}
+                  favorites={favorites} updateFavorites={updateFavorites}/>
+        ));
+    }
+
+    function renderNotFound() {
+        return favorites.length === 0 && (
+            <NotFound/>
+        );
+    }
+
+    return (
+        <>
+            <h1>Dentists Favs</h1>
+            <div className="card-grid">
+                {/* este componente debe consumir los destacados del localStorage */}
+                {/* Deberan renderizar una Card por cada uno de ellos */}
+                {renderFavorites()}
+                {renderNotFound()}
+            </div>
+        </>
+    );
 };
 
 export default Favs;

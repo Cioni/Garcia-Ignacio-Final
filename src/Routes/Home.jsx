@@ -1,35 +1,25 @@
-import React from 'react';
-import Card from '../Components/Card';
-import Loader from '../Components/Card';
-import { useContextGlobal } from "../Components/utils/global.context";
+import React from 'react'
+import {useGlobalContext} from "../Components/utils/global.context";
+import Card from "../Components/Card/Card"
+import {useFavorites} from "../Hooks/useFavorites";
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
 const Home = () => {
-  const {state} = useContextGlobal()
-  const dataCard = () =>{
-    let content;
-    if(state.data?.status){
-      content = <p>Error {state.data.status}</p>
-    }else{
-      content = 
-      state.data?.length > 0
-        ? state.data.map(d => <Card key={d.id} dentist={d} />)
-        : <Loader />
-    }
-    return content
-  }
+    const {globalState: {theme, data}} = useGlobalContext()
+    const {favorites, updateFavorites} = useFavorites()
 
-  return (
-    <>
-      <h1>Home</h1>
-      <h3 className='h3-home'>Nuestros profesionales: </h3>
-      <div className='card-grid'>
-        {/* Aqui deberias renderizar las cards */}
-        {dataCard()}
-      </div>
-    </>
-  )
-}
+    return (
+        <main className="">
+            <h1 className=''>HOME</h1>
+            <div className="card-grid">
+                {data && data.map((item) => (
+                    <Card key={item.id} name={item.name} username={item.username} id={item.id}
+                          favorites={favorites} updateFavorites={updateFavorites}/>
+                ))}
+            </div>
+        </main>
+    );
+};
 
-export default Home
+export default Home;
