@@ -1,5 +1,6 @@
 import React from "react";
-import { AiFillStar, AiOutlineStar } from 'react-icons/ai'
+import { Link } from "react-router-dom/dist";
+import { useContextGlobal } from "./utils/global.context";
 
 
 const useCard = ({name, username, id, favorites, updateFavorites}) => {

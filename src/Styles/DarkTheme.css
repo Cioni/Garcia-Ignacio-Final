@@ -1,0 +1,31 @@
+.dark nav {
+    background: linear-gradient(20deg, rgb(34 34 34) 40%, rgb(29,28,229) 100%);
+}
+
+.dark { 
+    background-color: #000000;
+    color: white;
+}
+
+.dark a,
+.dark button {
+    color: white;
+}
+
+.dark .card {
+    background-color: darkslategray;
+    border: none;
+    box-shadow: none;
+}
+
+.dark .form-container .form-info {
+    border-right: 3px solid #777;
+}
+
+.dark .form-container .form-inputs button { 
+    background-color: #777;
+}
+
+.dark .form-container .form-inputs button:hover {
+    background-color: #7770;
+}
