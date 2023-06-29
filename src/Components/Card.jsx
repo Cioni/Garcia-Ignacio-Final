@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom/dist";
-import { useContextGlobal } from "./utils/global.context";
+import React, { useEffect, useState } from "react";
+import { CardContainer, CardFavoriteButton, CardFavoriteButtonIcon, CardImg, CardName, CardUsername, StyledCard } from "./utils/Styles";
+import { useNavigate } from "react-router-dom";
 
 
 const useCard = ({name, username, id, favorites, updateFavorites}) => {
@@ -27,36 +27,22 @@ const useCard = ({name, username, id, favorites, updateFavorites}) => {
 }
 
 const Card = ({name, username, id, favorites, updateFavorites}) => {
-  const {isFavorite, showDetail, toggleFavorite} = useCard(
-      {name, username, id, favorites, updateFavorites}
-  )
-
-  const CardContainer = ({children}) => {
-    const container = {
-        marginBottom: "2rem",
-    }
+    const {isFavorite, showDetail, toggleFavorite} = useCard(
+        {name, username, id, favorites, updateFavorites}
+    )
 
     return (
-        <div style={container}>
-            {children}
-        </div>
+        <CardContainer>
+            <StyledCard onClick={showDetail}>
+                <CardImg src="public\images\doctor.jpg" alt={id}/>
+                <CardName value={name}/>
+                <CardUsername value={username}/>
+                <CardFavoriteButton onClick={(e) => toggleFavorite(e)}>
+                    <CardFavoriteButtonIcon isFavorite={isFavorite}/>
+                </CardFavoriteButton>
+            </StyledCard>
+        </CardContainer>
     );
-}
-
-return (
-  <div className="card">
-    <Link to={"/detail/" + id}>
-      <img src="/images/doctor.jpg" alt="" />
-      <h3>{name}</h3>
-      <p>{username}</p>
-    </Link>
-      {!isfav 
-        ? <button onClick={addFav} className="favButton"> <AiOutlineStar/> </button>
-        : <button onClick={removeFav} className="favButton"><AiFillStar/></button>
-      }
-      
-  </div>
-);
 };
 
 export default Card;

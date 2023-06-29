@@ -17,7 +17,7 @@ const Detail = () => {
         <>
             <h1>Detail Dentist id </h1>
             {!loading && (
-                <div className="card" style={cardStyle}>
+                <div className="card" style="">
                     <img src='public/images/doctor.jpg' alt="User" style=""/>
                     <div style="">
                         <div style="">

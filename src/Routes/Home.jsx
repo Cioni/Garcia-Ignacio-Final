@@ -1,7 +1,7 @@
 import React from 'react'
-import {useGlobalContext} from "../Components/utils/global.context";
-import Card from "../Components/Card/Card"
-import {useFavorites} from "../Hooks/useFavorites";
+import Card from '../Components/Card';
+import { useFavorites } from '../Components/utils/useFavorites';
+import { useGlobalContext } from '../Components/utils/global.context';
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
