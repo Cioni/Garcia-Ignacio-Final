@@ -44,7 +44,7 @@ export const CardImg = (props) => {
     }
 
     return (
-        <img {...props} className="cardPic" style={cardPic}/>
+        <img {...props} className="cardPic" style={cardPic} alt=""/>
     );
 }
 
@@ -75,14 +75,11 @@ export const CardUsername = ({value}) => {
 export const CardFavoriteButton = ({children, ...props}) => {
     const favButton = {
         position: "absolute",
-        padding: "10px",
         border: "none",
         background: "none",
-        width: "10%",
-        height: "10%",
         cursor: "pointer",
-        top: "2%",
-        left: "80%",
+        top: "90%",
+        left: "85%"
     }
 
     return (
@@ -93,5 +90,5 @@ export const CardFavoriteButton = ({children, ...props}) => {
 }
 
 export const CardFavoriteButtonIcon = ({isFavorite}) => (
-    <span role="img">{isFavorite ? "❤️" : "🖤"}</span>
+    <span role="img">{isFavorite ? "⭐" : "❤️"}</span>
 )

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { routes } from './utils/Routes';
 import { THEME } from './utils/constants';
+import { BsSun, BsCloudSunFill } from "react-icons/bs";
 import { useGlobalContext } from './utils/global.context';
 
 const useNavbar = () => {
@@ -19,15 +20,15 @@ const useNavbar = () => {
       if (theme === 'light') {
           return (
               <div>
-                  <i className="bi bi-caret-right-square-fill"></i>
-                  <i className="bi bi-h-square"></i>
+                  <i className={BsSun}></i>
+                  <i className={BsCloudSunFill}></i>
               </div>
           );
       } else if (theme === 'dark') {
           return (
               <div>
-                  <i className="bi bi-caret-right-square"></i>
-                  <i className="bi bi-h-square-fill"></i>
+                  <i className={BsSun}></i>
+                  <i className={BsCloudSunFill}></i>
               </div>
           );
       }
@@ -75,13 +76,10 @@ const Navbar = () => {
                     id="checkbox"
                     onChange={handleThemeToggle}
                 />
-                <label htmlFor="checkbox"
-                       className="checkbox-label"
-                       style={{backgroundColor: isDarkMode ? "white" : "black"}}>
-                    <i className="fas fa-moon" style={{color: "black"}}></i>
-                    <i className="bi bi-sun" style={{color: "white"}}></i>
-                    <span className="ball"
-                          style={{backgroundColor: isDarkMode ? "black" : "white"}}></span>
+                <label htmlFor="checkbox" className="checkbox-label"style={{backgroundColor: isDarkMode ? "white" : "black"}}>
+                    <i className={BsCloudSunFill} style={{color: "black"}}></i>
+                    <i className={BsSun} style={{color: "white"}}></i>
+                    <span className="ball" style={{backgroundColor: isDarkMode ? "black" : "white"}}></span>
                 </label>
             </div>
         </nav>

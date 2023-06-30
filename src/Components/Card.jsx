@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { CardContainer, CardFavoriteButton, CardFavoriteButtonIcon, CardImg, CardName, CardUsername, StyledCard } from "./utils/Styles";
 import { useNavigate } from "react-router-dom";
+import docImg from "../assets/doctor.jpg"
 
 
 const useCard = ({name, username, id, favorites, updateFavorites}) => {
@@ -34,7 +35,7 @@ const Card = ({name, username, id, favorites, updateFavorites}) => {
     return (
         <CardContainer>
             <StyledCard onClick={showDetail}>
-                <CardImg src="public\images\doctor.jpg" alt={id}/>
+                <CardImg src={docImg} alt={id}/>
                 <CardName value={name}/>
                 <CardUsername value={username}/>
                 <CardFavoriteButton onClick={(e) => toggleFavorite(e)}>
