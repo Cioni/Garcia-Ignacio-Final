@@ -48,7 +48,7 @@ const Navbar = () => {
       ...styles.link
     };
 
-    const iconSize = 24; // Tamaño del icono en píxeles
+    const iconSize = 30; // Tamaño del icono en píxeles
     const iconColor = isDarkMode ? 'black' : 'white'; // Color del icono
     const iconBackground = isDarkMode ? 'white' : 'black'; // Fondo del icono
 
@@ -62,14 +62,6 @@ const Navbar = () => {
           <Link to={routes.favs} className={link} style={linkStyles}> Favs </Link>
           <Link to={routes.contact} className={link} style={linkStyles}>Contact</Link>
         </div>
-        {/* <div style={styles.themeToggleContainer}>
-          <input type="checkbox" className="checkbox" id="checkbox" onChange={handleThemeToggle} />
-          <label htmlFor="checkbox" className="checkbox-label" style={{ backgroundColor: isDarkMode ? 'white' : 'black' }}>
-             {isDarkMode ? <BsCloudSunFill style={{ color: 'black' }} /> : <BsSun style={{ color: 'white' }} />}
-            <span className="ball" style={{ backgroundColor: isDarkMode ? 'black' : 'white' }}></span>
-          </label>
-        </div> */}
-
         <div style={styles.themeToggleContainer}>
           <span className="toggle-icon" onClick={handleThemeToggle}>
              {isDarkMode ? (
