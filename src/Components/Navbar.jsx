@@ -4,12 +4,12 @@ import { routes } from './utils/Routes';
 import { THEME } from './utils/constants';
 import { BsSun, BsCloudSunFill } from "react-icons/bs";
 import { useGlobalContext } from './utils/global.context';
+import { link } from './utils/Styles';
 
 const useNavbar = () => {
   const {globalState: {theme, data}, dispatchGlobalState} = useGlobalContext()
 
-  const handleThemeToggle = () => {
-      // document.body.classList.toggle('dark');
+  const handleThemeToggle = () => {  //maneja el cambio de tema
       dispatchGlobalState({
           type: "SWITCH_THEME",
           payload: theme === THEME.LIGHT ? THEME.DARK : THEME.LIGHT
@@ -42,49 +42,47 @@ const useNavbar = () => {
 }
 
 const Navbar = () => {
-    const {handleThemeToggle, getLogoIcon, isDarkMode, navbarClassName} = useNavbar()
+    const { handleThemeToggle, getLogoIcon, isDarkMode, navbarClassName } = useNavbar();
+    const linkStyles = {
+      color: isDarkMode ? 'var(--color-fondo)' : 'var(--color-fondo-dark)',
+      ...styles.link
+    };
+
+    const iconSize = 24; // Tamaño del icono en píxeles
+    const iconColor = isDarkMode ? 'black' : 'white'; // Color del icono
+    const iconBackground = isDarkMode ? 'white' : 'black'; // Fondo del icono
 
     return (
-        <nav className={navbarClassName}>
-            <div style={styles.logoContainer}>
-                {getLogoIcon()}
-            </div>
-            <div style={styles.linksContainer}>
-                <Link to={routes.home} className="link" style={{
-                    color: isDarkMode ? 'var(--color-fondo)' : 'var(--color-fondo-dark)',
-                    ...styles.link
-                }}>
-                    Home
-                </Link>
-                <Link to={routes.favs} className="link" style={{
-                    color: isDarkMode ? 'var(--color-fondo)' : 'var(--color-fondo-dark)',
-                    ...styles.link
-                }}>
-                    Favs
-                </Link>
-                <Link to={routes.contact} className="link" style={{
-                    color: isDarkMode ? 'var(--color-fondo)' : 'var(--color-fondo-dark)',
-                    ...styles.link
-                }}>
-                    Contact
-                </Link>
-            </div>
-            <div style={styles.themeToggleContainer}>
-                <input
-                    type="checkbox"
-                    className="checkbox"
-                    id="checkbox"
-                    onChange={handleThemeToggle}
-                />
-                <label htmlFor="checkbox" className="checkbox-label"style={{backgroundColor: isDarkMode ? "white" : "black"}}>
-                    <i className={BsCloudSunFill} style={{color: "black"}}></i>
-                    <i className={BsSun} style={{color: "white"}}></i>
-                    <span className="ball" style={{backgroundColor: isDarkMode ? "black" : "white"}}></span>
-                </label>
-            </div>
-        </nav>
+      <nav className={navbarClassName} style={{ display: 'flex', justifyContent: 'flex-end' }} >
+        <div style={styles.logoContainer}>
+          {getLogoIcon()}
+        </div>
+        <div style={styles.linksContainer}>
+          <Link to={routes.home} className={link} style={linkStyles}>Home</Link>
+          <Link to={routes.favs} className={link} style={linkStyles}> Favs </Link>
+          <Link to={routes.contact} className={link} style={linkStyles}>Contact</Link>
+        </div>
+        {/* <div style={styles.themeToggleContainer}>
+          <input type="checkbox" className="checkbox" id="checkbox" onChange={handleThemeToggle} />
+          <label htmlFor="checkbox" className="checkbox-label" style={{ backgroundColor: isDarkMode ? 'white' : 'black' }}>
+             {isDarkMode ? <BsCloudSunFill style={{ color: 'black' }} /> : <BsSun style={{ color: 'white' }} />}
+            <span className="ball" style={{ backgroundColor: isDarkMode ? 'black' : 'white' }}></span>
+          </label>
+        </div> */}
+
+        <div style={styles.themeToggleContainer}>
+          <span className="toggle-icon" onClick={handleThemeToggle}>
+             {isDarkMode ? (
+              <BsCloudSunFill className="sun-icon" style={{ fontSize: iconSize, color: iconColor, backgroundColor: iconBackground }} />
+            ) : (
+            <BsSun className="moon-icon" style={{ fontSize: iconSize, color: iconColor, backgroundColor: iconBackground }} />
+          )}
+        </span>
+      </div>
+      </nav>
     );
-};
+  };
+
 
 const styles = {
     navbar: {

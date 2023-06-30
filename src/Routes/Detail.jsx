@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../Components/utils/useFetch';
 import { USERS_URL } from '../Components/utils/constants';
+import docImg from "../assets/doctor.jpg"
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
 
@@ -18,7 +19,7 @@ const Detail = () => {
             <h1>Details</h1>
             {!loading && (
                 <div className="card">
-                    <img src='public/images/doctor.jpg' alt="User"/>
+                    <img src={docImg} alt="User" style={{ width: '100px' }}/>
                     <div>
                         <div>
                             <span>Name:</span> {user.name}

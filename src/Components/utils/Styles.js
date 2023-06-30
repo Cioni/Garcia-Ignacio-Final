@@ -14,6 +14,7 @@ export const CardContainer = ({children}) => {
 
 export const StyledCard = ({children, ...props}) => {
     const card = {
+        background: "rgb(163, 163, 163)", 
         position: "relative",
         display: "flex",
         justifyContent: "space-evenly",
@@ -92,3 +93,8 @@ export const CardFavoriteButton = ({children, ...props}) => {
 export const CardFavoriteButtonIcon = ({isFavorite}) => (
     <span role="img">{isFavorite ? "⭐" : "❤️"}</span>
 )
+
+export const link = {
+    display: 'flex',
+    flexDirection: 'row',
+}
