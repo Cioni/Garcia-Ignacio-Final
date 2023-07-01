@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { routes } from './utils/Routes';
 import { THEME } from './utils/constants';
@@ -42,11 +42,16 @@ const useNavbar = () => {
 }
 
 const Navbar = () => {
+  const {globalState: {theme, data}} = useGlobalContext()
     const { handleThemeToggle, getLogoIcon, isDarkMode, navbarClassName } = useNavbar();
     const linkStyles = {
-      color: isDarkMode ? 'var(--color-fondo)' : 'var(--color-fondo-dark)',
+      color: isDarkMode ? 'white' : 'var(--color-fondo-dark)',
       ...styles.link
     };
+
+    useEffect(() => {
+      document.body.className = theme === "dark" ? "dark" : "light";
+    }, [theme]);
 
     const iconSize = 30; // Tamaño del icono en píxeles
     const iconColor = isDarkMode ? 'black' : 'white'; // Color del icono
@@ -65,9 +70,9 @@ const Navbar = () => {
         <div style={styles.themeToggleContainer}>
           <span className="toggle-icon" onClick={handleThemeToggle}>
              {isDarkMode ? (
-              <BsCloudSunFill className="sun-icon" style={{ fontSize: iconSize, color: iconColor, backgroundColor: iconBackground }} />
+              <BsSun style={{ fontSize: iconSize, color: iconColor, backgroundColor: iconBackground }} />
             ) : (
-            <BsSun className="moon-icon" style={{ fontSize: iconSize, color: iconColor, backgroundColor: iconBackground }} />
+            <BsCloudSunFill style={{ fontSize: iconSize, color: iconColor, backgroundColor: iconBackground }} />
           )}
         </span>
       </div>
@@ -83,29 +88,19 @@ const styles = {
         justifyContent: 'space-between',
         padding: '1rem 2rem 1rem 2rem',
         width: '100vw',
-        backgroundColor: 'var(--color-nav-fondo)',
-        borderBottom: '2px solid var(--color-secundario)',
-        transition: 'var(color-nav-dark) 0.5s',
     },
     logoContainer: {
         marginRight: '2rem',
     },
-    logo: {
-        color: 'var(--color-texto)',
-        transition: 'color 0.5s',
-    },
     linksContainer: {
-        color: 'var(--color-secundario)',
         display: 'flex',
         flexDirection: 'row',
         gap: '2rem',
-        transition: 'color 0.5s',
     },
     link: {
         cursor: 'pointer',
         textDecoration: 'none',
         margin: '5px',
-        transition: 'color 0.5s',
     },
     themeToggleContainer: {
         marginLeft: 'auto',

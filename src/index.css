@@ -21,8 +21,6 @@ body {
     display: flex;
     justify-content: center;
     font-family: 'Montserrat', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 
@@ -42,9 +40,6 @@ a {
     cursor: pointer;
 }
 
-a:hover {
-    color: var(--color-secundario);
-}
 
 
 form {
